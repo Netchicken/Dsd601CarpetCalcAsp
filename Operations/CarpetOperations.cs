@@ -1,24 +1,52 @@
-﻿namespace Dsd601CarpetCalcAsp.Operations
+﻿using Dsd601CarpetCalcAsp.Model;
+
+namespace Dsd601CarpetCalcAsp.Operations
+
 {
 
     public class CarpetOperations
     {
-        private float _sumTotal { get; set; }
-        public float CalcRoomSqMtr(float roomLength, float roomWidth)
+        public float TotalInstallCost(Carpet carpet)
         {
-            return roomLength * roomWidth;
-        }
 
-        public float CalcInstallCost(float roomArea, float installationCost)
-        {
-            return installationCost * roomArea;
-        }
+            carpet.FinalCost += (carpet.CarpetType * carpet.RoomArea);
 
 
-        public float CalcUnderlayCost(float roomArea, float underlayCost)
-        {
-            return underlayCost * roomArea;
+            //switch (carpet.CarpetType)
+            //{
+            //    case 100:
+            //        carpet.FinalCost += (100 * carpet.RoomArea);
+            //        break;
+
+            //    case 2:
+            //        carpet.FinalCost += (200 * carpet.RoomArea);
+            //        break;
+
+
+            //    case 3:
+            //        carpet.FinalCost += (300 * carpet.RoomArea);
+            //        break;
+
+            //    default:
+            //        break;
+            //}
+
+
+            if (carpet.HasInstallation)
+            {
+                carpet.FinalCost += (carpet.InstallationCost * carpet.RoomArea);
+            }
+
+            if (carpet.HasUnderlay)
+            {
+                carpet.FinalCost += (carpet.UnderlayCost * carpet.RoomArea);
+            }
+
+            return carpet.FinalCost;
         }
+
+
+        //========================= Supplier==================
 
         public int CalcCarpetRolls(float roomLength, float roomWidth)
         {
@@ -72,10 +100,10 @@
 
 
         //return the cost of all the room calculations
-        public float TotalCost(float total)
-        {
-            _sumTotal += total;
-            return _sumTotal;
-        }
+        //public float TotalCost(float total)
+        //{
+        //    _sumTotal += total;
+        //    return _sumTotal;
+        //}
     }
 }

@@ -22,12 +22,12 @@
       </div>
        </div>
       <div class="form-check">
-    <input class="form-check-input" asp-for="@Model.carpet.InstallationCost">
+    <input class="form-check-input" asp-for="@Model.carpet.HasInstallation">
     <label class="form-check-label" >Do you want us to install the Carpet?</label>
     </div>
 
      <div class="form-check">
-    <input class="form-check-input" asp-for="@Model.carpet.UnderlayCost">
+    <input class="form-check-input" asp-for="@Model.carpet.HasUnderlay">
     <label class="form-check-label" >Do you want Underlay for your Carpet?</label>
   </div>
   </div>
@@ -37,8 +37,7 @@
 
 
 <label>Room Area Sqm</label>
-@{
-    
-}
     <input asp-for="@Model.carpet.RoomArea"   class="form-control w-50"  value="@Model.carpet.RoomArea.ToString()">
     
+    <label>Final Cost</label>
+    <input asp-for="@Model.carpet.FinalCost"   class="form-control w-50"  value="@Model.carpet.FinalCost.ToString()">

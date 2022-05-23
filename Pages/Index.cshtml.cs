@@ -15,13 +15,13 @@ namespace Dsd601CarpetCalcAsp.Pages
 
         public List<SelectListItem> carpetTypesList { get; } = new List<SelectListItem>
         {
-            new SelectListItem { Value = "1", Text = "Cheap" },
-            new SelectListItem { Value = "2", Text = "Home" },
-            new SelectListItem { Value = "3", Text = "Luxurious"  },
+            new SelectListItem { Value = "100", Text = "Cheap" },
+            new SelectListItem { Value = "200", Text = "Home" },
+            new SelectListItem { Value = "300", Text = "Luxurious"  },
         };
 
 
-        public CarpetOperations carpetOperations { get; set; }
+        public CarpetOperations carpetOperations = new CarpetOperations();
 
 
         private readonly ILogger<IndexModel> _logger;
@@ -32,27 +32,18 @@ namespace Dsd601CarpetCalcAsp.Pages
         }
 
 
-        //https://localhost:7116/?carpet.RoomWidth=3&carpet.RoomLength=3&carpet.CarpetType=1&carpet.InstallationCost=false&carpet.UnderlayCost=false
-        //public PageResult OnGet(string width, string length, string type, bool install, bool underlay)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        carpet.RoomWidth = Convert.ToSingle(width);
-        //        carpet.RoomLength = Convert.ToSingle(length);
-        //        carpet.RoomArea = Convert.ToSingle(width) * Convert.ToSingle(length);
 
-        //    }
-        //    return Page();
-        //}
         public async Task<IActionResult> OnPostAsync()
         {
 
             if (ModelState.IsValid)
             {
-                //carpet.RoomWidth = Convert.ToSingle(width);
-                //carpet.RoomLength = Convert.ToSingle(length);
+                carpet.InstallationCost = 20;
+                carpet.UnderlayCost = 20;
+
                 carpet.RoomArea = Convert.ToSingle(carpet.RoomWidth) * Convert.ToSingle(carpet.RoomLength);
 
+                carpet.FinalCost = carpetOperations.TotalInstallCost(carpet);
             }
 
             return Page();
