@@ -1,0 +1,44 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<form method="post">
+  <div class="mb-3">
+    
+<div class="row g-3">
+      <div class="col">
+    <label>Enter the Room Width</label>
+    <input asp-for="@Model.carpet.RoomWidth"  type="number" class="form-control w-50"  >
+    </div>
+    <div class="col">
+     <label>Enter the Room Length</label>
+    <input asp-for="@Model.carpet.RoomLength"  type="number" class="form-control w-50" >
+    </div>
+       
+     <div class="col">
+     <label>Enter the Carpet Type</label>
+     <select asp-for="@Model.carpet.CarpetType" asp-items="@Model.carpetTypesList"></select> 
+      </div>
+       </div>
+      <div class="form-check">
+    <input class="form-check-input" asp-for="@Model.carpet.InstallationCost">
+    <label class="form-check-label" >Do you want us to install the Carpet?</label>
+    </div>
+
+     <div class="form-check">
+    <input class="form-check-input" asp-for="@Model.carpet.UnderlayCost">
+    <label class="form-check-label" >Do you want Underlay for your Carpet?</label>
+  </div>
+  </div>
+   
+  <button type="submit" class="btn btn-primary">Submit Your Carpet Details</button>
+</form>
+
+
+<label>Room Area Sqm</label>
+@{
+    
+}
+    <input asp-for="@Model.carpet.RoomArea"   class="form-control w-50"  value="@Model.carpet.RoomArea.ToString()">
+    
