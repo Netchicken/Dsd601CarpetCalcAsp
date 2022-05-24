@@ -12,7 +12,7 @@ namespace Dsd601CarpetCalcAsp.Pages
         [BindProperty(SupportsGet = true)]
         public Carpet? carpet { get; set; }
 
-        public List<string> CarpetResults { get; set; }
+
 
 
 
@@ -33,7 +33,7 @@ namespace Dsd601CarpetCalcAsp.Pages
         {
             _logger = logger;
 
-            CarpetResults = new List<string>();
+
         }
 
 
@@ -41,7 +41,7 @@ namespace Dsd601CarpetCalcAsp.Pages
         {
             // carpet.Results.Add("Results");
 
-            CarpetResults.Add("Results here");
+
 
         }
 
@@ -54,7 +54,7 @@ namespace Dsd601CarpetCalcAsp.Pages
                 carpet.UnderlayCost = 20;
                 carpet.RoomArea = Convert.ToSingle(carpet.RoomWidth) * Convert.ToSingle(carpet.RoomLength);
                 carpet.FinalCost = carpetOperations.TotalInstallCost(carpet);
-                CarpetResults.Add("Room area " + carpet.RoomArea + "sqm $" + carpet.FinalCost);
+                carpet.Results = "Room area " + carpet.RoomArea + "sqm $" + carpet.FinalCost;
             }
             return Page();
         }
