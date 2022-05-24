@@ -40,13 +40,13 @@
 
 <div class="row g-2">
      <div class="col">
-<label>Room Area Sqm</label>
-    <input asp-for="@Model.carpet.RoomArea"   class="form-control w-50"  value="@Model.carpet.RoomArea.ToString()">
+<label>Room Area @Model.carpet.RoomArea sqm</label>
+    
     </div>
      <div class="col">
 
-    <label>Final Cost</label>
-    <input asp-for="@Model.carpet.FinalCost"   class="form-control w-50"  value="@Model.carpet.FinalCost.ToString()">
+    <label>Final Cost $@Model.carpet.FinalCost</label>
+    
     </div>
     </div>
    <label>@Model.carpet.Results</label>
