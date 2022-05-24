@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<h1>Carpet Cost Calculator</h1>
 <form method="post">
   <div class="mb-3">
     
@@ -17,7 +18,7 @@
     </div>
        
      <div class="col">
-     <label>Enter the Carpet Type</label>
+     <label>Enter the Carpet Type</label></br>
      <select asp-for="@Model.carpet.CarpetType" asp-items="@Model.carpetTypesList"></select> 
       </div>
        </div>
@@ -34,10 +35,25 @@
    
   <button type="submit" class="btn btn-primary">Submit Your Carpet Details</button>
 </form>
+ <div style="margin-top: 20px "   class=" border border-success rounded w-75 p-3 bg-success text-white">
+<h2>Results</h2>
 
-
+<div class="row g-2">
+     <div class="col">
 <label>Room Area Sqm</label>
     <input asp-for="@Model.carpet.RoomArea"   class="form-control w-50"  value="@Model.carpet.RoomArea.ToString()">
-    
+    </div>
+     <div class="col">
+
     <label>Final Cost</label>
     <input asp-for="@Model.carpet.FinalCost"   class="form-control w-50"  value="@Model.carpet.FinalCost.ToString()">
+    </div>
+    </div>
+   
+
+<ul>
+       @foreach(string item in Model.CarpetResults){
+       <li>@item</li>
+        }
+  </ul>
+  </div>

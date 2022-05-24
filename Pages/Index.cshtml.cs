@@ -12,6 +12,9 @@ namespace Dsd601CarpetCalcAsp.Pages
         [BindProperty(SupportsGet = true)]
         public Carpet? carpet { get; set; }
 
+        public List<string> CarpetResults { get; set; }
+
+
 
         public List<SelectListItem> carpetTypesList { get; } = new List<SelectListItem>
         {
@@ -29,23 +32,30 @@ namespace Dsd601CarpetCalcAsp.Pages
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
+
+            CarpetResults = new List<string>();
         }
 
+
+        public void OnGet()
+        {
+            // carpet.Results.Add("Results");
+
+            CarpetResults.Add("Results here");
+
+        }
 
 
         public async Task<IActionResult> OnPostAsync()
         {
-
             if (ModelState.IsValid)
             {
                 carpet.InstallationCost = 20;
                 carpet.UnderlayCost = 20;
-
                 carpet.RoomArea = Convert.ToSingle(carpet.RoomWidth) * Convert.ToSingle(carpet.RoomLength);
-
                 carpet.FinalCost = carpetOperations.TotalInstallCost(carpet);
+                CarpetResults.Add("Room area " + carpet.RoomArea + "sqm $" + carpet.FinalCost);
             }
-
             return Page();
         }
 

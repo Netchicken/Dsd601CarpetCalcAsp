@@ -16,5 +16,6 @@ namespace Dsd601CarpetCalcAsp.Model
         public float InstallationCost { get; set; }
         public float UnderlayCost { get; set; }
         public float FinalCost { get; set; }
+        public List<string> Results;
     }
 }
